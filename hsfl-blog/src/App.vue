@@ -51,7 +51,7 @@ export default {
 
 
 <style scoped>
-  /* Ihr CSS-Code hier */
+  
   * {
       box-sizing: border-box;
   }
@@ -62,7 +62,7 @@ export default {
   }
 
   .header h1 {
-    font-size: 70px; /* Dies wird die Schriftgröße auf 70px erhöhen */
+    font-size: 70px; 
 }
 
 
