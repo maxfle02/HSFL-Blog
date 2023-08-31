@@ -20,22 +20,27 @@ export default {
     };
   },
   methods: {
-    submitPost() {
+    async submitPost() {
+      // Erstelle ein BlogPostViewModel-Objekt für die Anfrage
       const postData = {
         Title: this.blogtitle,
-        Content: this.blogContent
+        Inhalt: this.blogContent
       };
+      
+      try {
+        // Sende die Daten an den Server
+        await axios.post('https://localhost:7123/blog', postData);
 
-      axios.post('https://localhost:7123/api/blog/add', postData)
-    .then(response => {
-        // Handle success, e.g., show a success message
-        console.log('Blog post added:', response.data);
-    })
-    .catch(error => {
-        // Handle error, e.g., show an error message
-        console.error('Error adding blog post:', error);
-    });
-
+        // Zurücksetzen der Eingabefelder nach erfolgreichem Post
+        this.blogtitle = '';
+        this.blogContent = '';
+        
+        // Aktualisieren der Benutzeroberfläche oder Weiterleitung
+        // je nach Anforderungen
+      } catch (error) {
+        console.error('Fehler beim Posten des Blogbeitrags:', error);
+        // Hier kannst du auf einen Fehler reagieren, z.B. Fehlermeldung anzeigen
+      }
     }
   }
 }
